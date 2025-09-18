@@ -16,7 +16,15 @@
 
 ## 安装说明
 
-1. 确保已安装Java 8或更高版本
+1. **安装Java环境**（必需）
+   - 需要安装Java 8或更高版本的JDK(Java开发工具包)
+   - 安装完成后，请确保java和javac命令已添加到系统PATH中
+   
+   **安装建议：**
+   - **macOS**: 使用Homebrew安装 `brew install openjdk@11`
+   - **Windows**: 从Oracle官网下载安装包并安装
+   - **Linux**: Ubuntu/Debian: `sudo apt install openjdk-11-jdk`; CentOS/RHEL: `sudo yum install java-11-openjdk-devel`
+
 2. 克隆项目到本地
 
 ```bash
