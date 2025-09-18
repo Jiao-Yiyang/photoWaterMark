@@ -41,6 +41,12 @@ public class WatermarkApp {
             return;
         }
         
+        if (!Utils.isSupportedImage(imageFile)) {
+            System.out.println("错误: 不支持的图片格式。支持的格式: jpg, jpeg, png, bmp, gif, tiff");
+            scanner.close();
+            return;
+        }
+        
         try {
             // 2. 读取EXIF信息中的拍摄时间
             String shootingDate = getShootingDate(imageFile);
@@ -181,14 +187,11 @@ public class WatermarkApp {
         // 创建保存目录
         String parentDir = imageFile.getParent();
         String watermarkDirPath = parentDir + File.separator + imageFile.getParentFile().getName() + "_watermark";
-        File watermarkDir = new File(watermarkDirPath);
-        if (!watermarkDir.exists()) {
-            watermarkDir.mkdir();
-        }
+        File watermarkDir = Utils.ensureDirectoryExists(watermarkDirPath);
         
         // 保存图片
-        String outputFilePath = watermarkDirPath + File.separator + 
-                               imageFile.getName().replaceFirst("\\.[^\\.]+$", "") + "_watermark.jpg";
+        String baseName = Utils.getFileNameWithoutExtension(imageFile.getName());
+        String outputFilePath = watermarkDirPath + File.separator + baseName + "_watermark.jpg";
         ImageIO.write(watermarkedImage, "jpg", new File(outputFilePath));
         
         System.out.println("水印添加成功！");
