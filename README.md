@@ -17,25 +17,41 @@
 ## 安装说明
 
 1. 确保已安装Java 8或更高版本
-2. 确保已安装Maven
-3. 克隆项目到本地
+2. 克隆项目到本地
 
 ```bash
 git clone <repository-url>
 cd photo-watermark
 ```
 
-## 构建项目
+## 使用方法
+
+### 方法一：使用提供的脚本（推荐）
+
+1. 为脚本添加执行权限
+
+```bash
+chmod +x run_watermark.sh
+```
+
+2. 运行脚本
+
+```bash
+./run_watermark.sh
+```
+
+脚本会自动下载必要的依赖库、编译代码并运行程序。
+
+### 方法二：使用Maven（如果已安装）
+
+1. 确保已安装Maven
+2. 构建项目
 
 ```bash
 mvn clean package
 ```
 
-构建成功后，会在`target`目录下生成可执行的jar文件。
-
-## 使用方法
-
-1. 运行jar文件
+3. 运行生成的jar文件
 
 ```bash
 java -jar target/photo-watermark-1.0-SNAPSHOT-jar-with-dependencies.jar
